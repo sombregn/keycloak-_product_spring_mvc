@@ -50,7 +50,7 @@ mvn clean install
 ### 2. Lancer l'application
 Démarrez l'application Spring Boot :
 - **mvn spring-boot:run**
-Vous pouvez également lancer l'application directement depuis votre IDE en appuyant sur le bouton Run.
+- **Vous pouvez également lancer l'application directement depuis votre IDE en appuyant sur le bouton Run.**
 
 ### 🌐 URLs d'accès
 Une fois l'application lancée, vous pouvez accéder aux services via les URLs suivantes :
