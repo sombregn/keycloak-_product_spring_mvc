@@ -1,3 +1,5 @@
+# Objectif:
+Mettre en place un crud Product avec l'authentification qui se fait apr du Keycloak!!!
 # Requirements
 #Prérequis pour démarrer le projet :
 Java 1.8 ou +
