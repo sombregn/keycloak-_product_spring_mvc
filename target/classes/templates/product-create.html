@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="template"
+      xmlns:layout="http://www.nz.net.ultraq.thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un Produit</title>
+    <link rel="stylesheet" href="webjars/bootstrap/5.3.3/css/bootstrap.min.css">
+    <style>
+        .card-header {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border: none;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header text-center">
+                <h2>Ajouter un Produit</h2>
+            </div>
+            <div class="card-body">
+                <div class="row justify-content-center">
+                    <form method="post" th:action="@{product-create}" class="col-md-8" th:object="${product}">
+                        <div class="row mb-3">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Référence" th:field="*{ref}">
+                                <p th:if="${#fields.hasErrors('ref')}" class="text-danger" th:errors="*{ref}"></p>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Nom" th:field="*{name}">
+                                <p th:if="${#fields.hasErrors('name')}" class="text-danger" th:errors="*{name}"></p>
+                                <p th:if="${nameError}" class="text-danger" th:text="${nameError}"></p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            <a href="#" th:href="@{products}" class="btn btn-secondary">Retour à la liste</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

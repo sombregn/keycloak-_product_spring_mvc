@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.nz.net.ultraq.thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.3.3/css/bootstrap.min.css">
+    <script src="webjars/bootstrap/5.3.3/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background: #343a40;
+            color: white;
+            height: 100vh;
+            position: fixed;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 15px;
+        }
+        .sidebar a:hover {
+            background: #495057;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2 class="text-center py-3">Dashboard</h2>
+    <a href="#" sec:authorize="isAuthenticated()" th:href="@{products}"><i class="fas fa-home"></i> Acceuil</a>
+    <a href="#" sec:authorize="isAuthenticated()" th:href="@{product-create}"><i class="fas fa-plus"></i> Nouvel Produit</a>
+    <a href="#" sec:authorize="isAuthenticated()" th:href="@{products}"><i class="fas fa-list"></i> Liste des Produits</a>
+    <a href="#" onclick="document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+    <form id="logout-form" action="/sso/logout" method="post" style="display:none">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+    </form>
+</div>
+
+<div class="content">
+    <nav class="navbar navbar-expand-sm bg-primary navbar-light">
+        <div class="container-fluid">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+                    <a class="text-white" role="button">
+                        <i class="fas fa-user"></i> <span sec:authentication="name"></span>
+                    </a>
+<!--                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">-->
+<!--                        <a class="dropdown-item" href="#" onclick="document.getElementById('logout-form').submit();">Logout</a>-->
+<!--                    </div>-->
+                </li>
+                <li class="nav-item" sec:authorize="isAnonymous()">
+                    <a class="text-white" href="/sso/login">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section layout:fragment="content"></section>
+</div>
+
+</body>
+</html>

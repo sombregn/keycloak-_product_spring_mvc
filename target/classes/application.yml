@@ -1,0 +1,38 @@
+# Configuration du serveur
+server:
+  port: 8092
+
+# Configuration Keycloak
+keycloak:
+  realm: spring-mvc2-realm
+  auth-server-url: "http://localhost:8181/"
+  resource: spring-mvc-2
+  public-client: true
+  principal-attribute: name
+
+# Configuration de l'application Spring
+spring:
+  application:
+    name: Spring Web MVC
+
+  # Configuration de la source de données
+  datasource:
+    url: jdbc:postgresql://localhost:5432/springmvc?createDatabaseIfNotExist=true
+    username: username
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+  # Configuration JPA
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  # Configuration Thymeleaf
+  thymeleaf:
+    cache: false
