@@ -22,7 +22,7 @@ L'objectif de ce projet est de créer une application Spring MVC permettant de g
 ## 📦 Prérequis
 Avant de commencer, assurez-vous d'avoir les éléments suivants installés sur votre machine :
 
-- **Java 1.8** ou version ultérieure
+- **Java 1.8** ou version +
 - **Maven** pour la gestion des dépendances
 - **Docker** pour lancer Keycloak et l'application
 
