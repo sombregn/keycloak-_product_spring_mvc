@@ -45,7 +45,7 @@ Lancez les services nécessaires (Keycloak et l'application) avec Docker Compose
 🚀 Lancement du projet
 ### 1. Build de l'application
 Compilez et construisez l'application avec Maven :
-mvn clean install
+-**mvn clean install**
 
 ### 2. Lancer l'application
 Démarrez l'application Spring Boot :
